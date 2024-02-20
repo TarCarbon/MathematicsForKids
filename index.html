@@ -15,16 +15,25 @@
         <div class="game">
             <div class="numbers" id="numbers"> </div>
 
-            <input class="input" type="number" id="numberInput" min="0">
+            <input class="input" type="number" id="numberInput" min="0" onkeypress="submitNumberPress(event)">
 
             <div class="btn">
-                <button onclick="submitNumber()" onkeypress="submitNumberPress(event)"><img class="btn-img"
-                        src="img/buttons_PNG162-762042631.png" alt="btn" /></button>
+                <button onclick="submitNumber()"><img class="btn-img" src="img/buttons_PNG162-762042631.png"
+                        alt="btn" /></button>
             </div>
+            <div id="result"></div>
+
         </div>
 
-        <script src="scripts.js"></script>
+
     </main>
+
+    <!--- TO DO розмістити відповідно --->
+    <div class="right-anwsver" id="right-anwsver"></div>
+    <!--END-->
+
+    <script src="scripts.js"></script>
+
 </body>
 
 </html>

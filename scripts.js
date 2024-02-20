@@ -1,60 +1,49 @@
-let firstRandomNumber = Math.floor(Math.random() * 10) + 1;
-let secondRandomNumber = Math.floor(Math.random() * 10) + 1;
 
-let numbers = document.getElementById("numbers")
-let res = document.getElementById("result")
+if (sessionStorage.getItem('check') === null) {
+    sessionStorage.setItem('check', true);
+    sessionStorage.setItem('rightAnswer', 0);
+}
+
+if (JSON.parse(sessionStorage.getItem('check'))) {
+    sessionStorage.setItem('fNum', Math.floor(Math.random() * 10) + 1);
+    sessionStorage.setItem('sNum', Math.floor(Math.random() * 10) + 1);
+}
+
+const firstRandomNumber = parseInt(sessionStorage.getItem('fNum'));
+const secondRandomNumber = parseInt(sessionStorage.getItem('sNum'));
+
+
+const numbers = document.getElementById("numbers")
 
 numbers.innerText = firstRandomNumber + " + " + secondRandomNumber + " = ";
+
+const rAnswer = document.getElementById("right-anwsver");
+rAnswer.innerText = sessionStorage.getItem('rightAnswer');
+
 const answer = (firstRandomNumber + secondRandomNumber);
 
-//document.getElementById("result").innerText = answer;
-
 function submitNumber() {
-    var inputValue = document.getElementById("numberInput").value;
+    let inputValue = parseInt(document.getElementById("numberInput").value);
 
     if (!isNaN(inputValue)) {
         if (answer != inputValue) {
+            sessionStorage.setItem('check', false);
             window.location.href = "bad.html";
-            res.innerText = answer;
         }
         else {
+            sessionStorage.setItem('check', true);
+            let i = parseInt(sessionStorage.getItem('rightAnswer'));
+            i++;
+            sessionStorage.setItem('rightAnswer', i);
             window.location.href = "good.html";
-            var colors = ['#bb0000', '#ffffff'];
-
-            (function frame() {
-                confetti({
-                    particleCount: 2,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: colors
-                });
-                confetti({
-                    particleCount: 2,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: colors
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
         }
     } else {
-        // Якщо введено не число, виводимо повідомлення про помилку
         document.getElementById("result").innerText = "Введіть дійсне число!";
     }
-
-
 }
 
 function submitNumberPress(event) {
     if (event.key === 'Enter') {
         submitNumber();
     }
-
-
 }
-

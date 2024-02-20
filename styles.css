@@ -20,7 +20,7 @@ main {
 }
 
 .game {
-    width: 500px;
+    width: 550px;
     height: 300px;
     border: 2px solid black;
     border-radius: 3%;
@@ -40,10 +40,11 @@ main {
 }
 
 .input {
-    width: 100px;
+    width: 120px;
     height: 90px;
     font-size: 80px;
     vertical-align: text-bottom;
+    border-radius: 5%;
 }
 
 .emoji {
@@ -54,7 +55,6 @@ main {
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-
     border: 2px solid black;
     border-radius: 5%;
     box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
@@ -79,4 +79,9 @@ main {
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
+}
+
+
+.right-anwsver {
+    font-size: 50px;
 }
